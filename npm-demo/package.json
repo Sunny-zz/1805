@@ -1,0 +1,23 @@
+{
+  "name": "npm-demo",
+  "version": "1.0.0",
+  "description": "just a npm demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "zzt",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^1.11.1",
+    "swiper": "^4.3.5"
+  },
+  "devDependencies": {
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "zepto": "^1.2.0"
+  }
+}
