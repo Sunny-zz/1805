@@ -180,5 +180,16 @@
 // 第三方模块或核心模块的导入方式
 // 模块的导入必须写在js文件的最上面
 
-import $ from 'jquery'
-console.log($)
+// import $ from 'jquery'
+// console.log($)
+// 模块导入方式 1.命名导入  导入的变量名必须和导出的相同
+// a as c 相当于导入 a 该名成 c
+// import {a as c,b} from './test'
+// import {b} from './test'
+// console.log(c,b)
+// 模块导入方式 2.默认导入  导入的变量名随意
+
+// import xxx from './test'
+// import {c} from './test'
+import xxx,{c} from './test'
+console.log(xxx,c)
