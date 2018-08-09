@@ -71,9 +71,114 @@
 //   return a * a
 // }
 // console.log(add(3))
-let arr = [1, 2, 3, 2, 2, 33, 2, 4, 521]
+// let arr = [1, 2, 3, 2, 2, 33, 2, 4, 521]
 // let newArr = arr.filter(function(number) {
 //   return number > 20
 // })
-let newArr = arr.filter(number => number > 20)
-console.log(newArr)
+// let newArr = arr.filter(number => number > 20)
+// console.log(newArr)
+
+// 模板字符串
+// var username = 'zzt'
+// console.log(`my name is ${username}`)
+
+// 扩展运算符
+// let obj = {
+//   name: 'zzt',
+//   age: 30
+// }
+// let obj1 = {
+//   age: 20
+// }
+
+// Object.assign   $.extend()
+
+// let newObj = Object.assign(obj, obj1)
+// console.log(newObj)
+// 对象的展开
+// let newObj = { ...obj }
+// newObj.name = 'xiaohong'
+// console.log(obj)
+
+// let arr = [1, 2, 3]
+
+// // let newArr = [...arr]
+// let newArr = arr.slice(0)
+// newArr[1] = 5
+// console.log(newArr)
+// react 不变性原则
+
+// let obj = {
+//   name: 'zzt'
+// }
+// let obj1 = {
+//   age: 20
+// }
+// let newObj = { ...obj, ...obj1 }
+// console.log(newObj)
+
+// 类 构造函数
+// function Point(x, y) {
+//   this.x = x
+//   this.y = y
+// }
+// Point.prototype.toString = function() {
+//   return `(${this.x},${this.y})`
+// }
+// let point = new Point(10, 20)
+// console.log(point)
+// es6类的内部 只允许写方法 并且 方法之间不能写 逗号
+// constructor 方法比较特殊实例化类的时候，直接执行
+// class Point {
+//   // constructor 相当于构造函数
+//   // 其他的方法相当于原型内的方法
+//   constructor(x, y) {
+//     this.x = x
+//     this.y = y
+//   }
+//   toString() {
+//     return `(${this.x},${this.y})`
+//   }
+// }
+// let point = new Point(10, 20)
+// console.log(point.toString())
+// es6 对象内方法的简写
+// let user = {
+//   name: 'zzt',
+//   sayName() {
+//     console.log(this.name)
+//   }
+// }
+// user.sayName()
+
+// 类的继承
+// class Animal {
+//   constructor(name) {
+//     this.name = name
+//   }
+//   sayName() {
+//     console.log('My name is ' + this.name)
+//   }
+// }
+
+// class Programmer extends Animal {
+//   constructor(name) {
+//     // super 指的是继承下来的父类的构造器
+//     // super方法只要是继承就必须执行
+//     super(name)
+//   }
+//   program() {
+//     console.log("I'm coding...")
+//   }
+// }
+
+// let zzt = new Programmer('zzt')
+// zzt.sayName()
+
+// es6 模块 modules
+// 使用 webpack 搭建模块环境
+// 第三方模块或核心模块的导入方式
+// 模块的导入必须写在js文件的最上面
+
+import $ from 'jquery'
+console.log($)
