@@ -204,7 +204,7 @@
 // modules 模块
 
 // promise
-import axios from 'axios'
+// import axios from 'axios'
 // axios
 //   .get('http://jsonplaceholder.typicode.com/posts')
 //   .then(res => {
@@ -231,11 +231,35 @@ import axios from 'axios'
 // })
 
 // promise.all() 处理多个请求成功之后要做某件事
+// 因为 axios 请求底层就是使用 promise 实现的，所以每个 axios 请求就是 promise 实例
+// let promise = Promise.all([
+//   axios.get('http://jsonplaceholder.typicode.com/posts'),
+//   axios.get('http://jsonplaceholder.typicode.com/posts/1')
+// ])
+// promise.then(function(res) {
+//   console.log(res)
+// })
 
-let promise = Promise.all([
-  axios.get('http://jsonplaceholder.typicode.com/posts'),
-  axios.get('http://jsonplaceholder.typicode.com/posts/1')
-])
-promise.then(function(res) {
-  console.log(res)
-})
+// 数组的方法     filter筛选  find查找一个  findIndex查找一个索引   map映射     reduce
+// let arr = [1, 2, 3, 4, 5, 6]
+// let newArr = arr.map(number => number * number)
+// console.log(newArr)
+
+let arr = [
+  {
+    goodsName: 'nike',
+    price: 1000,
+    num: 10
+  },
+  {
+    goodsName: 'cache',
+    price: 400,
+    num: 5
+  }
+]
+// reduce 函数第一个参数是函数(函数内的第一个参数是最终结果，函数的返回值也是最终结果)，第二个参数是最终结果的初始值, reduce 函数的返回值就是内部函数的 最终结果
+let total = arr.reduce((obj, goods) => {
+  obj = obj + goods.price * goods.num
+  return obj
+}, 0)
+console.log(total)
