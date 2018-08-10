@@ -191,5 +191,51 @@
 
 // import xxx from './test'
 // import {c} from './test'
-import xxx,{c} from './test'
-console.log(xxx,c)
+// import xxx,{c} from './test'
+// console.log(xxx,c)
+
+// let  const
+// 字符串模板
+// 扩展运算符
+// 解构赋值
+// 箭头函数
+// 函数参数的默认值
+// class
+// modules 模块
+
+// promise
+import axios from 'axios'
+// axios
+//   .get('http://jsonplaceholder.typicode.com/posts')
+//   .then(res => {
+//     console.log(res.data)
+//   })
+//   .catch(err => {
+//     console.log(err)
+//   })
+// resolve 异步操作执行完毕后会被调用
+// reject 异步操作执行出现错误
+
+// let thing = new Promise(function(resolve, reject) {
+//   console.log('running')
+//   setTimeout(function() {
+//     // 异步操作执行完毕
+//     resolve()
+//   }, 3000)
+// })
+// thing.then(function() {
+//   console.log('thing.then()...')
+// })
+// thing.catch(function() {
+//   console.log('thing.catch()...')
+// })
+
+// promise.all() 处理多个请求成功之后要做某件事
+
+let promise = Promise.all([
+  axios.get('http://jsonplaceholder.typicode.com/posts'),
+  axios.get('http://jsonplaceholder.typicode.com/posts/1')
+])
+promise.then(function(res) {
+  console.log(res)
+})
