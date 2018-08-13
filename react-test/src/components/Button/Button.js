@@ -24,7 +24,9 @@ class Button extends Component {
     const { text, color } = this.props
     // 使用 react包下的 prop-types 一个方法设置 组件的默认 props
     // 第一步 引入 prop-types 默认导入为 PropTypes
-    // 第二步 在组件外部,也就是 class 外 使用 Button.defaultProps 属性设置默认的 props
+    // 第二步 在组件外部,也就是 class 外使用 Button.defaultProps 属性设置默认的 props
+    // 第三步 使用 Button.propTypes 设置默认 props 的类型
+    // note: 只设置 props 默认值的话不需要执行第一步，设置类型需要第一步
     return (
       <button className="btn" style={{ color: color }}>
         {text}
@@ -35,6 +37,10 @@ class Button extends Component {
 
 export default Button
 
+Button.propTypes = {
+  text: PropTypes.string,
+  color: PropTypes.string
+}
 Button.defaultProps = {
   text: '按钮',
   color: '#000'
