@@ -7,6 +7,9 @@ import './button.css'
 // 组件中 this 指的是 实例化之后的 <Button />
 // 组件的 props 是只读的
 class Button extends Component {
+  handleClick() {
+    console.log(1)
+  }
   render() {
     // 设置 props 的默认值
     // 方案 1
@@ -27,8 +30,16 @@ class Button extends Component {
     // 第二步 在组件外部,也就是 class 外使用 Button.defaultProps 属性设置默认的 props
     // 第三步 使用 Button.propTypes 设置默认 props 的类型
     // note: 只设置 props 默认值的话不需要执行第一步，设置类型需要第一步
+
+    // react 的事件处理
+    // 将事件作为 Button 组件的一个方法,在 jsx 中 标签内部使用 onClick 属性绑定点击事件 ,例如( onClick={this.handleClick} )，因为事件方法是 js 语法所以要使用{}，另外想要在 render 方法内使用组件内的其他方法，需使用 this.handleClick 获取。
+
     return (
-      <button className="btn" style={{ color: color }}>
+      <button
+        className="btn"
+        onClick={this.handleClick}
+        style={{ color: color }}
+      >
         {text}
       </button>
     )
