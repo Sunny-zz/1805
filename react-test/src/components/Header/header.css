@@ -1,0 +1,13 @@
+header {
+  width: 100%;
+  height: 61px;
+  background-color: red;
+  text-align: center;
+}
+header:nth-child(2) .logo {
+  width: 100%;
+  height: 61px;
+  background-image: url(../../images/Morethan_logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
