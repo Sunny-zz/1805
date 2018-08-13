@@ -7,8 +7,13 @@ import './button.css'
 // 组件的 props 是只读的
 class Button extends Component {
   render() {
-    const { text } = this.props
-    return <button className="btn">{text}</button>
+    const { text, color } = this.props
+
+    return (
+      <button className="btn" style={{ color: color }}>
+        {text}
+      </button>
+    )
   }
 }
 
