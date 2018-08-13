@@ -24,7 +24,7 @@ class Button extends Component {
     // }
     // const { color, text } = { ...defaultProps, ...this.props }
     // 方案 3
-    const { text, color } = this.props
+    const { text, color, click } = this.props
     // 使用 react包下的 prop-types 一个方法设置 组件的默认 props
     // 第一步 引入 prop-types 默认导入为 PropTypes
     // 第二步 在组件外部,也就是 class 外使用 Button.defaultProps 属性设置默认的 props
@@ -35,11 +35,7 @@ class Button extends Component {
     // 将事件作为 Button 组件的一个方法,在 jsx 中 标签内部使用 onClick 属性绑定点击事件 ,例如( onClick={this.handleClick} )，因为事件方法是 js 语法所以要使用{}，另外想要在 render 方法内使用组件内的其他方法，需使用 this.handleClick 获取。
 
     return (
-      <button
-        className="btn"
-        onClick={this.handleClick}
-        style={{ color: color }}
-      >
+      <button className="btn" onClick={click} style={{ color: color }}>
         {text}
       </button>
     )
@@ -50,7 +46,8 @@ export default Button
 
 Button.propTypes = {
   text: PropTypes.string,
-  color: PropTypes.string
+  color: PropTypes.string,
+  click: PropTypes.func
 }
 Button.defaultProps = {
   text: '按钮',
