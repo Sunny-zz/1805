@@ -17,6 +17,7 @@ class Header extends Component {
             {/* 父组件如何向子组件传递 props  在组件标签内部传递当做组件的属性传递*/}
             <Button text="登录" color="red" />
             <Button text="注册" color="blue" />
+            <Button />
           </div>
         </header>
         {/* <header>
