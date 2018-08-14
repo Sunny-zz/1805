@@ -10,6 +10,7 @@ class Button extends Component {
   handleClick() {
     console.log(1)
   }
+
   render() {
     // 设置 props 的默认值
     // 方案 1
