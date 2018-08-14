@@ -1,5 +1,24 @@
 .modal {
 }
+/* 动画会在消失出现的时候再次执行 */
+@keyframes wrapShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes modalShow {
+  0% {
+    transform: scale(0);
+    transform-origin: 0 bottom;
+  }
+  100% {
+    transform: scale(1);
+    transform-origin: 0 bottom;
+  }
+}
 .modal button {
   height: 32px;
   background-color: #1980ff;
@@ -11,6 +30,7 @@
   padding: 0 15px;
   border-radius: 4px;
 }
+
 .modal .wrap {
   width: 100%;
   height: 100%;
@@ -21,12 +41,18 @@
   right: 0;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.5);
+  animation: wrapShow 0.75s;
 }
-.modal .wrap > div {
+.modal > div:nth-child(3) {
   width: 500px;
-  margin: 80px auto 0;
+  margin-top: 80px;
   border-radius: 4px;
   background-color: #fff;
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  margin-left: -250px;
+  animation: modalShow 0.75s;
 }
 .modal .header {
   display: flex;

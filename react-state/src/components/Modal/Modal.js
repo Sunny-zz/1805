@@ -12,10 +12,10 @@ class Modal extends Component {
   close = () => {
     this.setState({ show: false })
   }
-  stop = event => {
-    // 阻止事件冒泡  event
-    event.stopPropagation()
-  }
+  // stop = event => {
+  //   // 阻止事件冒泡  event
+  //   event.stopPropagation()
+  // }
   render() {
     const { show } = this.state
     return (
@@ -27,21 +27,20 @@ class Modal extends Component {
           className="wrap"
           onClick={this.close}
           style={{ display: show ? 'block' : 'none' }}
-        >
-          <div onClick={this.stop}>
-            <div className="header">
-              <h3>Basic Modal</h3>
-              <span onClick={this.close}>X</span>
-            </div>
-            <div className="main">
-              <p>some contents</p>
-              <p>some contents</p>
-              <p>some contents</p>
-            </div>
-            <div className="footer">
-              <button onClick={this.close}>取消</button>
-              <button onClick={this.close}>确定</button>
-            </div>
+        />
+        <div style={{ display: show ? 'block' : 'none' }}>
+          <div className="header">
+            <h3>Basic Modal</h3>
+            <span onClick={this.close}>X</span>
+          </div>
+          <div className="main">
+            <p>some contents</p>
+            <p>some contents</p>
+            <p>some contents</p>
+          </div>
+          <div className="footer">
+            <button onClick={this.close}>取消</button>
+            <button onClick={this.close}>确定</button>
           </div>
         </div>
       </div>
