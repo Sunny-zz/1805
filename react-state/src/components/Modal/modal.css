@@ -1,0 +1,60 @@
+.modal {
+}
+.modal button {
+  height: 32px;
+  background-color: #1980ff;
+  color: #fff;
+  outline: none;
+  border: 1px solid #1980ff;
+  font-size: 14px;
+  line-height: 32px;
+  padding: 0 15px;
+  border-radius: 4px;
+}
+.modal .wrap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal .wrap > div {
+  width: 500px;
+  margin: 80px auto 0;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.modal .header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.modal .header .h3 {
+  margin: 0;
+  line-height: 40px;
+}
+.modal .main {
+  width: 100%;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 20px;
+}
+.modal .footer {
+  display: flex;
+  justify-content: flex-end;
+  height: 60px;
+  align-items: center;
+}
+.modal .footer button + button {
+  margin: 0 20px 0 8px;
+}
+.modal .header span,
+.modal .footer button {
+  cursor: pointer;
+}
