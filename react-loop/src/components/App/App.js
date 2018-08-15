@@ -6,14 +6,14 @@ class App extends Component {
   }
   handleClick = ind => {
     this.setState({
-      left: ind * -590
+      left: ind
     })
   }
   render() {
     const { left } = this.state
     return (
       <div className="show">
-        <div className="pic" style={{ marginLeft: left }}>
+        <div className="pic" style={{ marginLeft: left * -590 }}>
           <img
             src="https://m.360buyimg.com/babel/jfs/t23242/156/1867609779/92790/34d973ea/5b6bfec5N183c91fd.jpg"
             alt=""
@@ -38,7 +38,7 @@ class App extends Component {
                 this.handleClick(0)
               }}
               href="javascript:;"
-              className="active"
+              className={`box ${left === 0 ? 'active' : ''}`}
             />
           </li>
           <li>
@@ -47,6 +47,7 @@ class App extends Component {
                 this.handleClick(1)
               }}
               href="javascript:;"
+              className={`box ${left === 1 ? 'active' : ''}`}
             />
           </li>
           <li>
@@ -55,6 +56,7 @@ class App extends Component {
                 this.handleClick(2)
               }}
               href="javascript:;"
+              className={`box ${left === 2 ? 'active' : ''}`}
             />
           </li>
           <li>
@@ -63,6 +65,7 @@ class App extends Component {
                 this.handleClick(3)
               }}
               href="javascript:;"
+              className={`box ${left === 3 ? 'active' : ''}`}
             />
           </li>
         </ul>
