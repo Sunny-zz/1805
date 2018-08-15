@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import Test from '../Test/Test'
 
+// 组件的生命周期
 class App extends Component {
   state = {
     users: [
@@ -63,6 +65,7 @@ class App extends Component {
         <button onClick={this.showAll}>全部</button>
         <button onClick={this.showSome}>大于21</button>
         <div>{lists}</div>
+        <Test />
       </div>
     )
   }
