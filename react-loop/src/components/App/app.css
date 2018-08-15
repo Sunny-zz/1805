@@ -1,0 +1,33 @@
+.show {
+  width: 590px;
+  height: 470px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+.show .pic {
+  display: flex;
+  transition: margin-left 0.75s linear;
+}
+.pic img {
+  width: 590px;
+}
+.show ul {
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  position: absolute;
+  left: 50px;
+  bottom: 15px;
+}
+.show ul li a {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-left: 10px;
+}
+.show ul li a.active {
+  background-color: #00b3d4;
+}
