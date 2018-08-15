@@ -9,16 +9,24 @@ class App extends Component {
       left: ind
     })
   }
-  handleLeft = () => {
+  // handleLeft = () => {
+  //   const { left } = this.state
+  //   const newLeft = left > 0 ? left - 1 : 3
+  //   this.setState({
+  //     left: newLeft
+  //   })
+  // }
+  // handleRight = () => {
+  //   const { left } = this.state
+  //   const newLeft = left < 3 ? left + 1 : 0
+  //   this.setState({
+  //     left: newLeft
+  //   })
+  // }
+  handleArrow = arrow => {
     const { left } = this.state
-    const newLeft = left > 0 ? left - 1 : 3
-    this.setState({
-      left: newLeft
-    })
-  }
-  handleRight = () => {
-    const { left } = this.state
-    const newLeft = left < 3 ? left + 1 : 0
+    const newLeft =
+      arrow === 'left' ? (left > 0 ? left - 1 : 3) : left < 3 ? left + 1 : 0
     this.setState({
       left: newLeft
     })
@@ -83,10 +91,20 @@ class App extends Component {
             />
           </li>
         </ul>
-        <span className="left" onClick={this.handleLeft}>
+        <span
+          className="left"
+          onClick={() => {
+            this.handleArrow('left')
+          }}
+        >
           {'<'}
         </span>
-        <span className="right" onClick={this.handleRight}>
+        <span
+          className="right"
+          onClick={() => {
+            this.handleArrow('right')
+          }}
+        >
           >
         </span>
       </div>
