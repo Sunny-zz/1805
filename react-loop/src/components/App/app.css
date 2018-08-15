@@ -31,3 +31,19 @@
 .show ul li a.active {
   background-color: #00b3d4;
 }
+.show span {
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  top: 50%;
+  text-align: center;
+  line-height: 80px;
+  margin-top: -40px;
+  cursor: pointer;
+}
+.show .right {
+  right: 0;
+}

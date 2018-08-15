@@ -9,6 +9,20 @@ class App extends Component {
       left: ind
     })
   }
+  handleLeft = () => {
+    const { left } = this.state
+    const newLeft = left > 0 ? left - 1 : 3
+    this.setState({
+      left: newLeft
+    })
+  }
+  handleRight = () => {
+    const { left } = this.state
+    const newLeft = left < 3 ? left + 1 : 0
+    this.setState({
+      left: newLeft
+    })
+  }
   render() {
     const { left } = this.state
     return (
@@ -69,6 +83,12 @@ class App extends Component {
             />
           </li>
         </ul>
+        <span className="left" onClick={this.handleLeft}>
+          {'<'}
+        </span>
+        <span className="right" onClick={this.handleRight}>
+          >
+        </span>
       </div>
     )
   }
