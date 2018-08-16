@@ -1,58 +1,40 @@
 import React, { Component } from 'react'
-
-// react 中的表单(input textarea select) 要写成受控组件
+import './app.css'
 class App extends Component {
   state = {
-    username: '',
-    comment: '',
-    sex: '女'
+    isLogin: false,
+    token: '',
+    show: true
   }
-  handleChange = event => {
+  handleInput = event => {
     this.setState({
-      username: event.target.value
+      token: event.target.value
     })
   }
-  handleTextarea = event => {
-    this.setState({ comment: event.target.value })
-  }
-  handleRadio = event => {
-    this.setState({ sex: event.target.value })
-  }
-  render() {
-    const { username, comment, sex } = this.state
 
-    return (
+  render() {
+    const { isLogin, token, show } = this.state
+    const loginBox = isLogin ? (
       <div>
-        {/* 非受控组件:页面中输入内容的变化不受 state 控制 */}
-        {/* <label htmlFor="username">用户名</label>
-        <input id="username" type="text" defaultValue="默认" /> */}
-        {/* 受控组件：页面中输入内容的变化必须使用 state 控制，使用 onChange 事件修改 state ，onChange 只要输入框内容发生改变就会被触发  */}
-        <label htmlFor="username">用户名</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={this.handleChange}
-        />
-        <textarea id="" value={comment} onChange={this.handleTextarea} />
-        <br />
-        <div>
-          <span>男</span>
+        <img src="" alt="" />
+        <button>退出</button>
+      </div>
+    ) : (
+      <button className="login-btn">登录</button>
+    )
+    return (
+      <div className="login">
+        <header>{loginBox}</header>
+        <div className="wrap" style={{ display: show ? 'block' : 'none' }}>
+          <label htmlFor="token">token</label>
           <input
-            name="sex"
-            value="男"
-            checked={sex === '男' ? true : false}
-            onChange={this.handleRadio}
-            type="radio"
+            type="text"
+            id="token"
+            className="token"
+            value={token}
+            onChange={this.handleInput}
           />
-          <span>女</span>
-          <input
-            value="女"
-            checked={sex === '女' ? true : false}
-            onChange={this.handleRadio}
-            name="sex"
-            type="radio"
-          />
+          <button className="sub">submit</button>
         </div>
       </div>
     )

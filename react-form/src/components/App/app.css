@@ -1,0 +1,16 @@
+.login header {
+  display: flex;
+  justify-content: flex-end;
+}
+.login .wrap {
+  position: absolute;
+  width: 400px;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+  background-color: #ccc;
+  top: 40px;
+  left: 50%;
+  margin-left: -200px;
+  display: none;
+}
