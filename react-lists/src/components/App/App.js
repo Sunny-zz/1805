@@ -26,6 +26,7 @@ class App extends Component {
       })
     })
   }
+
   render() {
     // 展示 大于 22 岁的所有人名
     // const lists =
