@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import './app.css'
 class App extends Component {
   state = {
-    isLogin: false,
-    token: '',
+    isLogin: true,
+    token: '9948d556-1825-416f-934f-b3ce046403e3',
     show: true
   }
   handleInput = event => {
