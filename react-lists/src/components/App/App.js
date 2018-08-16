@@ -1,27 +1,11 @@
 import React, { Component } from 'react'
 import Test from '../Test/Test'
+import axios from 'axios'
 
 // 组件的生命周期
 class App extends Component {
   state = {
-    users: [
-      {
-        name: 'zzt',
-        age: 20
-      },
-      {
-        name: 'cwz',
-        age: 21
-      },
-      {
-        name: 'ym',
-        age: 21
-      },
-      {
-        name: 'wq',
-        age: 20
-      }
-    ],
+    users: [],
     show: '全部'
   }
   showAll = () => {
@@ -32,6 +16,14 @@ class App extends Component {
   showSome = () => {
     this.setState({
       show: '大于21'
+    })
+  }
+  componentDidMount = () => {
+    const uri = 'http://localhost:3008/users'
+    axios.get(uri).then(res => {
+      this.setState({
+        users: res.data
+      })
     })
   }
   render() {
@@ -47,6 +39,7 @@ class App extends Component {
     //     </ul>
     //   )
     // react 的标签数组直接写在 jsx 内，自动渲染
+    // 因为自动生成的列表是由 state 控制的生成了多个 react 的 dom 结构，同时生成的多个相同节点需要给每个节点设置 key 属性，以便底层处理 (key 属性的属性值不能相同，通常设置为数据的 id )。
     const { show, users } = this.state
     const listsArr =
       show === '全部' ? users : users.filter(user => user.age > 21)
@@ -56,7 +49,7 @@ class App extends Component {
       ) : (
         <ul>
           {listsArr.map(user => (
-            <li>{user.name}</li>
+            <li key={user.id}>{user.name}</li>
           ))}
         </ul>
       )
