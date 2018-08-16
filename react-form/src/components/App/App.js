@@ -7,6 +7,16 @@ class App extends Component {
     token: '',
     show: false
   }
+  componentDidMount = () => {
+    // 刷新的时候可能修改 isLogin 这个 state
+    // 当浏览器记录了我的登录状态时，修改 state
+    const { token, username, userImg } = sessionStorage
+    if (username && userImg) {
+      this.setState({
+        isLogin: true
+      })
+    }
+  }
   handleInput = event => {
     this.setState({
       token: event.target.value
@@ -21,7 +31,12 @@ class App extends Component {
     const uri = 'https://cnodejs.org/api/v1/accesstoken'
     const { token } = this.state
     axios.post(uri, { accesstoken: token }).then(res => {
-      console.log(res.data)
+      // console.log(res.data)
+      // 登录成功时 要将 accesstoken 存储本地浏览中，之后刷新页面的时候我们可以判断 本地存储是否存在 accesstoken,来判断是否登录了
+      // sessionStorage.token = token
+      sessionStorage.username = res.data.loginname
+      sessionStorage.userImg = res.data.avatar_url
+      // sessionStorage.isLogin = true
       this.setState({
         show: false,
         token: '',
@@ -30,6 +45,9 @@ class App extends Component {
     })
   }
   handleLoginout = () => {
+    // sessionStorage.removeItem('token')
+    sessionStorage.removeItem('username')
+    sessionStorage.removeItem('userImg')
     this.setState({
       isLogin: false
     })
@@ -37,9 +55,10 @@ class App extends Component {
   // h5 的本地存储  localStorage   sessionStorage
   render() {
     const { isLogin, token, show } = this.state
+    console.log(sessionStorage.userImg)
     const loginBox = isLogin ? (
       <div>
-        <img src="" alt="" />
+        <img src={sessionStorage.userImg} alt="" />
         <button className="loginout" onClick={this.handleLoginout}>
           退出
         </button>
