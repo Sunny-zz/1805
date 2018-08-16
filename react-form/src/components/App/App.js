@@ -1,26 +1,53 @@
 import React, { Component } from 'react'
 import './app.css'
+import axios from 'axios'
 class App extends Component {
   state = {
-    isLogin: true,
-    token: '9948d556-1825-416f-934f-b3ce046403e3',
-    show: true
+    isLogin: false,
+    token: '',
+    show: false
   }
   handleInput = event => {
     this.setState({
       token: event.target.value
     })
   }
-
+  handleLoginBtn = () => {
+    this.setState({
+      show: true
+    })
+  }
+  handleSubmit = () => {
+    const uri = 'https://cnodejs.org/api/v1/accesstoken'
+    const { token } = this.state
+    axios.post(uri, { accesstoken: token }).then(res => {
+      console.log(res.data)
+      this.setState({
+        show: false,
+        token: '',
+        isLogin: true
+      })
+    })
+  }
+  handleLoginout = () => {
+    this.setState({
+      isLogin: false
+    })
+  }
+  // h5 的本地存储  localStorage   sessionStorage
   render() {
     const { isLogin, token, show } = this.state
     const loginBox = isLogin ? (
       <div>
         <img src="" alt="" />
-        <button>退出</button>
+        <button className="loginout" onClick={this.handleLoginout}>
+          退出
+        </button>
       </div>
     ) : (
-      <button className="login-btn">登录</button>
+      <button className="login-btn" onClick={this.handleLoginBtn}>
+        登录
+      </button>
     )
     return (
       <div className="login">
@@ -34,7 +61,9 @@ class App extends Component {
             value={token}
             onChange={this.handleInput}
           />
-          <button className="sub">submit</button>
+          <button className="sub" onClick={this.handleSubmit}>
+            submit
+          </button>
         </div>
       </div>
     )
