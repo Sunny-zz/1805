@@ -34,9 +34,9 @@ class App extends Component {
       // console.log(res.data)
       // 登录成功时 要将 accesstoken 存储本地浏览中，之后刷新页面的时候我们可以判断 本地存储是否存在 accesstoken,来判断是否登录了
       // sessionStorage.token = token
+      // sessionStorage.isLogin = true
       sessionStorage.username = res.data.loginname
       sessionStorage.userImg = res.data.avatar_url
-      // sessionStorage.isLogin = true
       this.setState({
         show: false,
         token: '',
