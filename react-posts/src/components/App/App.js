@@ -27,6 +27,15 @@ class App extends Component {
       })
     }
   }
+  handleDelete = id => {
+    const uri = `http://localhost:3008/comments/${id}`
+    const { comments } = this.state
+    axios.delete(uri).then(res => {
+      this.setState({
+        comments: comments.filter(comment => comment.id !== id)
+      })
+    })
+  }
   render() {
     const { comments, comment } = this.state
     const commentList =
@@ -35,7 +44,12 @@ class App extends Component {
       ) : (
         <ul>
           {comments.map(comment => (
-            <li key={comment.id}>{comment.body}</li>
+            <li key={comment.id}>
+              {comment.body}{' '}
+              <button onClick={() => this.handleDelete(comment.id)}>
+                删除
+              </button>
+            </li>
           ))}
         </ul>
       )
