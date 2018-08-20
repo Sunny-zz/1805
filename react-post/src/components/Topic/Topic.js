@@ -56,7 +56,7 @@ class Topic extends Component {
       <div>
         <TopicBody topic={topic} num={currentComments.length} />
         <TopicComment
-          currentComments={currentComments}
+          currentComments={currentComments.reverse()}
           addComment={this.addComment}
           delComment={this.delComment}
         />
