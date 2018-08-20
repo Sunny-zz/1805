@@ -20,14 +20,36 @@ class Topic extends Component {
       this.setState({ topic: res.data })
     })
   }
+  addComment = comment => {
+    if (comment.trim()) {
+      const { id } = this.props.match.params
+      const commentObj = {
+        body: comment,
+        topicId: id
+      }
+      const uri = `http://localhost:3008/comments`
+      axios.post(uri, commentObj).then(res => {
+        const { comments } = this.state
+        this.setState({
+          comments: [...comments, res.data]
+        })
+      })
+    }
+  }
   render() {
     const { comments, topic } = this.state
-    const id = topic ? topic.topicId : undefined
-    const currentComments = comments.filter(comment => comment.topicId === id)
+    const { id } = this.props.match.params
+
+    const currentComments = comments.filter(
+      comment => comment.topicId.toString() === id
+    )
     return (
       <div>
-        <TopicBody topic={topic} />
-        <TopicComment currentComments={currentComments} />
+        <TopicBody topic={topic} num={currentComments.length} />
+        <TopicComment
+          currentComments={currentComments}
+          addComment={this.addComment}
+        />
       </div>
     )
   }
