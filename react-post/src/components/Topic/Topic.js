@@ -36,6 +36,15 @@ class Topic extends Component {
       })
     }
   }
+  delComment = id => {
+    const uri = `http://localhost:3008/comments/${id}`
+    axios.delete(uri).then(res => {
+      const { comments } = this.state
+      this.setState({
+        comments: comments.filter(comment => comment.id !== id)
+      })
+    })
+  }
   render() {
     const { comments, topic } = this.state
     const { id } = this.props.match.params
@@ -49,6 +58,7 @@ class Topic extends Component {
         <TopicComment
           currentComments={currentComments}
           addComment={this.addComment}
+          delComment={this.delComment}
         />
       </div>
     )

@@ -15,8 +15,9 @@ class TopicComment extends Component {
     addComment(comment)
     this.setState({ comment: '' })
   }
-  delComment = () => {
-    console.log('222')
+  delComment = id => {
+    const { delComment } = this.props
+    delComment(id)
   }
   render() {
     const { currentComments } = this.props
@@ -28,7 +29,8 @@ class TopicComment extends Component {
         <ul>
           {currentComments.map(comment => (
             <li key={comment.id}>
-              {comment.body} <button onClick={this.delComment}>删除</button>
+              {comment.body}
+              <button onClick={() => this.delComment(comment.id)}>删除</button>
             </li>
           ))}
         </ul>

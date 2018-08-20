@@ -13,29 +13,19 @@
   ],
   "comments": [
     {
-      "id": 1,
-      "body": "react react react",
-      "topicId": 1212
-    },
-    {
-      "id": 2,
-      "body": "vue vue vue",
-      "topicId": 1244
-    },
-    {
-      "body": "1122111",
-      "topicId": "1212",
-      "id": 3
-    },
-    {
-      "body": "21312312",
-      "topicId": "1212",
-      "id": 4
-    },
-    {
       "body": "qweqweqweqw",
       "topicId": "1244",
       "id": 5
+    },
+    {
+      "body": "eqweqwe",
+      "topicId": "1244",
+      "id": 6
+    },
+    {
+      "body": "qwqwe",
+      "topicId": "1244",
+      "id": 7
     }
   ]
 }
