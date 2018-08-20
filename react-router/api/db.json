@@ -3,12 +3,26 @@
     {
       "id": 1,
       "title": "react",
-      "content": "ajkdsgh jsghd kjasgh dhs react react"
+      "content": "ajkdsgh jsghd kjasgh dhs react react",
+      "topicId": 1
     },
     {
       "id": 2,
       "title": "vue",
-      "content": "ajkdsgh sadasd kjasgh dhs vue vue"
+      "content": "ajkdsgh sadasd kjasgh dhs vue vue",
+      "topicId": 2
+    }
+  ],
+  "comments":[
+    {
+      "id":12312,
+      "body":"asdkjagskdjgaskjdgask hasdkg asdjg ask",
+      "topicId":2
+    },
+    {
+      "id": 11112,
+      "body": "asdkjagskdjg aas asskj asd dgasd sdksadas  hasdkg asdjg ask",
+      "topicId": 1
     }
   ]
 }
