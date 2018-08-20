@@ -1,37 +1,14 @@
 import React, { Component } from 'react'
 
 class Products extends Component {
-  state = {
-    products: [
-      {
-        id: '112121',
-        goodsName: 'iPad 4 Mini',
-        price: 500.01,
-        inventory: 1
-      },
-      {
-        id: '116765',
-        goodsName: 'T-shirt',
-        price: 100,
-        inventory: 10
-      }
-    ]
-  }
-  AddToCart = id => {
+  addToCart = id => {
     // console.log(id)
-    const { products } = this.state
-    this.setState({
-      products: products.map(goods => {
-        if (goods.id === id) {
-          goods.inventory = goods.inventory > 0 ? goods.inventory - 1 : 0
-        }
-        return goods
-      })
-    })
+
+    const { addToCart } = this.props
+    addToCart(id)
   }
   render() {
-    const { products } = this.state
-
+    const { products } = this.props
     const productList = products.map(goods => (
       <li key={goods.id}>
         <p style={{ marginBottom: 0 }}>
@@ -40,7 +17,7 @@ class Products extends Component {
         </p>
         <button
           disabled={!goods.inventory}
-          onClick={() => this.AddToCart(goods.id)}
+          onClick={() => this.addToCart(goods.id)}
         >
           {!goods.inventory ? 'Sold Out' : 'add to cart'}
         </button>
