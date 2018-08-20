@@ -7,7 +7,7 @@ class Products extends Component {
         id: '112121',
         goodsName: 'iPad 4 Mini',
         price: 500.01,
-        inventory: 2
+        inventory: 1
       },
       {
         id: '116765',
@@ -17,14 +17,33 @@ class Products extends Component {
       }
     ]
   }
+  AddToCart = id => {
+    // console.log(id)
+    const { products } = this.state
+    this.setState({
+      products: products.map(goods => {
+        if (goods.id === id) {
+          goods.inventory = goods.inventory > 0 ? goods.inventory - 1 : 0
+        }
+        return goods
+      })
+    })
+  }
   render() {
     const { products } = this.state
+
     const productList = products.map(goods => (
       <li key={goods.id}>
         <p style={{ marginBottom: 0 }}>
-          {goods.goodsName} - ${goods.price.toFixed(2)} x {goods.inventory}
+          {goods.goodsName} - ${goods.price.toFixed(2)}
+          {goods.inventory ? `x ${goods.inventory}` : ''}
         </p>
-        <button>add to cart</button>
+        <button
+          disabled={!goods.inventory}
+          onClick={() => this.AddToCart(goods.id)}
+        >
+          {!goods.inventory ? 'Sold Out' : 'add to cart'}
+        </button>
       </li>
     ))
     return (
