@@ -3,3 +3,15 @@
   top: 50%;
   margin-top: -16px;
 }
+.app .ant-carousel .slick-dots {
+  bottom: 30px;
+}
+.app .ant-carousel .slick-dots li button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #000;
+}
+.app .ant-carousel .slick-dots li.slick-active button {
+  background-color: #00b3d4;
+}
