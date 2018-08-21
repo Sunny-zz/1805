@@ -19,29 +19,39 @@ class App extends Component {
         inventory: 10
       }
     ],
-    cartProducts: [
-      {
-        id: '112121',
-        goodsName: 'iPad 4 Mini',
-        price: 500.01,
-        inventory: 1,
-        num: 1
-      }
-    ]
+    cartProducts: []
   }
   addToCart = id => {
-    const { products } = this.state
+    const { products, cartProducts } = this.state
+    const isInCart = cartProducts.findIndex(item => item.id === id)
+    const newCart =
+      isInCart === -1
+        ? [
+            ...cartProducts,
+            { ...products.find(item => item.id === id), num: 1 }
+          ]
+        : cartProducts.map(item => {
+            if (item.id === id) {
+              item.num = item.num + 1
+            }
+            return item
+          })
+    console.log(newCart)
+    console.log(isInCart)
     this.setState({
       products: products.map(goods => {
         if (goods.id === id) {
           goods.inventory = goods.inventory > 0 ? goods.inventory - 1 : 0
         }
         return goods
-      })
+      }),
+      cartProducts: newCart
     })
   }
+
   render() {
     const { products, cartProducts } = this.state
+    console.log(cartProducts)
     return (
       <div>
         <Header />
