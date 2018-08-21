@@ -6,6 +6,9 @@ class Products extends Component {
 
     const { addToCart } = this.props
     addToCart(id)
+    // 如何在组建内定义一个全局的属性 使用 this.xxx 定义
+    console.log(this.inp)
+    // console.log(document.getElementById('btn'))
   }
   render() {
     const { products } = this.props
@@ -16,8 +19,10 @@ class Products extends Component {
           {goods.inventory ? `x ${goods.inventory}` : ''}
         </p>
         <button
+          id="btn"
           disabled={!goods.inventory}
           onClick={() => this.addToCart(goods.id)}
+          ref={inp => (this.inp = inp)}
         >
           {!goods.inventory ? 'Sold Out' : 'add to cart'}
         </button>
