@@ -15,7 +15,9 @@ class ShoppingCart extends Component {
           ))}
         </ul>
       )
-
+    const total = cartProducts
+      .reduce((total, item) => total + item.num * item.price, 0)
+      .toFixed(2)
     return (
       <div>
         <h2>ShoppingCart</h2>
@@ -23,7 +25,7 @@ class ShoppingCart extends Component {
         {cartProducts.length !== 0 ? (
           <span>
             total:$
-            {1000.0}
+            {total}
           </span>
         ) : (
           ''

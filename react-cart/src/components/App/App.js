@@ -36,8 +36,6 @@ class App extends Component {
             }
             return item
           })
-    console.log(newCart)
-    console.log(isInCart)
     this.setState({
       products: products.map(goods => {
         if (goods.id === id) {
@@ -52,6 +50,7 @@ class App extends Component {
   render() {
     const { products, cartProducts } = this.state
     console.log(cartProducts)
+
     return (
       <div>
         <Header />
