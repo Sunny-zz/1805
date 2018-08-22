@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import store from '../../store'
 class TopicComment extends Component {
   state = {
     comment: ''
@@ -19,7 +19,8 @@ class TopicComment extends Component {
   }
   render() {
     const { comment } = this.state
-    const { comments } = this.props
+    // const { comments } = this.props
+    const { comments } = store.getState()
     const commentBox =
       comments.length === 0 ? (
         <span>评论为空</span>
