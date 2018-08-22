@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button'
 import blue from '@material-ui/core/colors/pink'
-
 import {
   withStyles,
   createMuiTheme,
@@ -25,8 +24,8 @@ class MaterialUi extends Component {
     const { classes } = this.props
     return (
       <MuiThemeProvider theme={theme}>
-        <Button mini variant="fab" color="primary">
-          Hello
+        <Button mini variant="text" color="primary">
+          hello
         </Button>
         <TextField
           id="password-input"
