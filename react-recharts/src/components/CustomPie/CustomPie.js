@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { PieChart, Pie, Sector, Cell } from 'recharts'
+import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts'
+import Tool from '../Tool/Tool'
 class CustomPie extends Component {
   render() {
     const data = [
@@ -16,15 +17,18 @@ class CustomPie extends Component {
             data={data}
             cx={300}
             cy={200}
-            labelLine={false}
             outerRadius={80}
+            innerRadius={40}
             fill="#8884d8"
+            label={true}
             dataKey="value"
           >
             {data.map((entry, index) => (
               <Cell key={index} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
+          <Legend />
+          <Tooltip content={<Tool />} />
         </PieChart>
       </div>
     )
