@@ -12,11 +12,16 @@ class CustomPie extends Component {
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']
     return (
       <div>
-        <PieChart width={800} height={400} onMouseEnter={this.onPieEnter}>
+        <PieChart
+          width={400}
+          height={240}
+          onMouseEnter={this.onPieEnter}
+          style={{ margin: '0 auto' }}
+        >
           <Pie
             data={data}
-            cx={300}
-            cy={200}
+            cx={200}
+            cy={120}
             outerRadius={80}
             innerRadius={40}
             fill="#8884d8"
@@ -27,7 +32,6 @@ class CustomPie extends Component {
               <Cell key={index} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
-          <Legend />
           <Tooltip content={<Tool />} />
         </PieChart>
       </div>
