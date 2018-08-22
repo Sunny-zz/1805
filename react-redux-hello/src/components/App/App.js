@@ -15,3 +15,5 @@ class App extends Component {
 }
 
 export default App
+
+// https://www.yuque.com/sunnyzz/react-redux
