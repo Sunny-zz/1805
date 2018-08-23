@@ -2442,3 +2442,12 @@ In the future, we might start automatically compiling incompatible third-party m
 ## Something Missing?
 
 If you have ideas for more “How To” recipes that should be on this page, [let us know](https://github.com/facebookincubator/create-react-app/issues) or [contribute some!](https://github.com/facebookincubator/create-react-app/edit/master/packages/react-scripts/template/README.md)
+
+
+
+
+redux 将数据存储到 store 中
+1.安装 redux 包
+2.创建 src/store/index.js ，使用 createStore 方法创建 store
+ createStore() 使用:该方法接收一个 reducer 函数作为参数
+ reducer 函数默认接受两个参数 第一个是 state  action ,必须返回 state

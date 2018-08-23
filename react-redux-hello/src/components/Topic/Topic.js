@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import TopicBody from '../TopicBody/TopicBody'
 import TopicComment from '../TopicComment/TopicComment'
 import shortId from 'shortid'
-import store from '../../store'
+
 class Topic extends Component {
   state = {
     comments: []
@@ -17,7 +17,6 @@ class Topic extends Component {
   }
   render() {
     const { comments } = this.state
-    console.log(store.getState())
     return (
       <div>
         <TopicBody comments={comments} />
