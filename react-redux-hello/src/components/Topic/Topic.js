@@ -4,12 +4,14 @@ import TopicComment from '../TopicComment/TopicComment'
 
 class Topic extends Component {
   render() {
-    const { comments } = this.props
-    console.log(comments)
+    const { comments, topics } = this.props
+    const { id } = this.props.match.params
+    const topic = topics.find(topic => topic.id === id)
+    const currentComments = comments.filter(comment => comment.topicId === id)
     return (
       <div>
-        <TopicBody comments={comments} />
-        <TopicComment comments={comments} />
+        <TopicBody comments={currentComments} topic={topic} />
+        <TopicComment comments={currentComments} />
       </div>
     )
   }
