@@ -11,7 +11,7 @@ class Topic extends Component {
     return (
       <div>
         <TopicBody comments={currentComments} topic={topic} />
-        <TopicComment comments={currentComments} />
+        <TopicComment id={id} comments={currentComments} />
       </div>
     )
   }

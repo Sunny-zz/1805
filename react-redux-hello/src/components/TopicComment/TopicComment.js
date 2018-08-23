@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import store from '../../store'
+import shortId from 'shortid'
 class TopicComment extends Component {
   state = {
     comment: ''
@@ -10,14 +11,14 @@ class TopicComment extends Component {
     })
   }
   handleClick = () => {
-    // const { addComment } = this.props
+    const { id } = this.props
     const { comment } = this.state
-    // addComment(comment)
     this.setState({
       comment: ''
     })
     // dispatch 方法 需要传递一个对象参数 一个属性是负载数据，另外一个属性type： 是 action 的类型
-    store.dispatch({ type: 'ADD_COMMENT', comment: comment })
+    const newComment = { id: shortId(), comment: comment, topicId: id }
+    store.dispatch({ type: 'ADD_COMMENT', comment: newComment })
   }
   render() {
     const { comment } = this.state

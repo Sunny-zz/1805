@@ -9,7 +9,8 @@ const inistialState = [
 const comments = (state = inistialState, action) => {
   switch (action.type) {
     case 'ADD_COMMENT':
-      return [...state]
+      const { comment } = action
+      return [...state, comment]
     default:
       return state
   }
