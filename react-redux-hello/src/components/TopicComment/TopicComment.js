@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import store from '../../store'
-import { connect } from 'react-redux'
 class TopicComment extends Component {
   state = {
     comment: ''
@@ -46,7 +45,5 @@ class TopicComment extends Component {
 
 // connect 的使用 该函数需要调用两次 第一次调用需要传递一个参数 这个参数是一个函数(mapStateToProps) 第二次调用需要传递一个参数 该参数是一个 react 组件也就是想要接收某个 store 的组件
 // mapStateToProps 函数默认接受一个参数 也就是 store 中的数据，该函数需要返回一个值 来作为某个组件需要的 props
-const mapStateToProps = state => {
-  return { comments: state.comments }
-}
-export default connect(mapStateToProps)(TopicComment)
+
+export default TopicComment

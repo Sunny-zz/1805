@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Topic from '../Topic/Topic'
+import TopicContainer from '../../containers/TopicContainer'
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Topic />
+        <TopicContainer />
       </div>
     )
   }
