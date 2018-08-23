@@ -1,3 +1,4 @@
+import shortId from 'shortid'
 const inistialState = {
   comments: [
     {
@@ -11,12 +12,10 @@ const inistialState = {
 const rootReducer = (state = inistialState, action) => {
   switch (action.type) {
     case 'ADD_COMMENT':
-      console.log(action.comment)
+      // console.log(action.comment)
+      const { comments } = state
       return {
-        comments: [
-          { id: '12sda', comment: 'git nice' },
-          { id: '122sd', comment: 'git asdasd' }
-        ]
+        comments: [...comments, { comment: action.comment, id: shortId() }]
       }
     default:
       return state

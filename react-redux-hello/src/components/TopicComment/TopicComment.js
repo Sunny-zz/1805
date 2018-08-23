@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import store from '../../store'
+import { connect } from 'react-redux'
 class TopicComment extends Component {
   state = {
     comment: ''
@@ -13,16 +14,15 @@ class TopicComment extends Component {
     // const { addComment } = this.props
     const { comment } = this.state
     // addComment(comment)
-    // this.setState({
-    //   comment: ''
-    // })
+    this.setState({
+      comment: ''
+    })
     // dispatch 方法 需要传递一个对象参数 一个属性是负载数据，另外一个属性type： 是 action 的类型
     store.dispatch({ type: 'ADD_COMMENT', comment: comment })
   }
   render() {
     const { comment } = this.state
-    // const { comments } = this.props
-    const { comments } = store.getState()
+    const { comments } = this.props
     const commentBox =
       comments.length === 0 ? (
         <span>评论为空</span>
@@ -44,4 +44,9 @@ class TopicComment extends Component {
   }
 }
 
-export default TopicComment
+// connect 的使用 该函数需要调用两次 第一次调用需要传递一个参数 这个参数是一个函数(mapStateToProps) 第二次调用需要传递一个参数 该参数是一个 react 组件也就是想要接收某个 store 的组件
+// mapStateToProps 函数默认接受一个参数 也就是 store 中的数据，该函数需要返回一个值 来作为某个组件需要的 props
+const mapStateToProps = state => {
+  return { comments: state.comments }
+}
+export default connect(mapStateToProps)(TopicComment)

@@ -20,7 +20,7 @@ class Topic extends Component {
     return (
       <div>
         <TopicBody comments={comments} />
-        <TopicComment addComment={this.addComment} comments={comments} />
+        <TopicComment />
       </div>
     )
   }

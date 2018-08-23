@@ -2451,3 +2451,9 @@ redux 将数据存储到 store 中
 2.创建 src/store/index.js ，使用 createStore 方法创建 store
  createStore() 使用:该方法接收一个 reducer 函数作为参数
  reducer 函数默认接受两个参数 第一个是 state  action ,必须返回 state
+
+
+ 动态订阅 store 中的数据
+ 1.安装 react-redux 包
+ 2.使用 react-redux 包中 Provider 将 store 中的数据提供给 App 组件
+ 3.使用 connect 获取 Provider 提供的 store
