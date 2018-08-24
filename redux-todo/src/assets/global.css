@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+
+xxx {
+  margin: 0;
+  background-color: #fff;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
