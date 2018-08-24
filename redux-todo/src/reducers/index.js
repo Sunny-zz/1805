@@ -1,11 +1,9 @@
-const inistialState = [
-  {
-    id: '123',
-    content: '今天上课',
-    isComplete: false
-  }
-]
-
-const rootReducer = (state = inistialState, action) => state
+import { combineReducers } from 'redux'
+import filter from './filter'
+import todos from './todos'
+const rootReducer = combineReducers({
+  filter: filter,
+  todos: todos
+})
 
 export default rootReducer

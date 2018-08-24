@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import '../assets/global.css'
-import Main from './Main'
+import MainContaner from '../containers/MainContaner'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Main />
+        <MainContaner />
       </div>
     )
   }
