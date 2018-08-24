@@ -2,6 +2,8 @@ const inistialState = 'all'
 
 const filter = (state = inistialState, action) => {
   switch (action.type) {
+    case 'SET_FILTER':
+      return action.filter
     default:
       return state
   }

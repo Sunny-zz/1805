@@ -11,3 +11,5 @@ export const getCurrentTodos = (state, filter) => {
       return null
   }
 }
+export const getActiveNum = todos =>
+  todos.filter(todo => !todo.isCompleted).length

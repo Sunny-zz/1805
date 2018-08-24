@@ -13,7 +13,7 @@ class Main extends Component {
         <Title>TODO</Title>
         <InputText />
         <TodoList todos={todos} filter={filter} />
-        <Menu />
+        <Menu todos={todos} />
       </Wrap>
     )
   }

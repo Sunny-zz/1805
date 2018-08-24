@@ -1,14 +1,42 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import store from '../store'
+import { getActiveNum } from '../selectors'
 class Menu extends Component {
+  handleClick = filter => {
+    store.dispatch({
+      type: 'SET_FILTER',
+      filter
+    })
+  }
   render() {
+    const { todos } = this.props
+    const num = getActiveNum(todos)
     return (
       <Wrap>
-        <span> 0 items left</span>
+        <span> {num} items left</span>
         <div>
-          <button>All</button>
-          <button>Active</button>
-          <button>Completed</button>
+          <button
+            onClick={() => {
+              this.handleClick('all')
+            }}
+          >
+            All
+          </button>
+          <button
+            onClick={() => {
+              this.handleClick('active')
+            }}
+          >
+            Active
+          </button>
+          <button
+            onClick={() => {
+              this.handleClick('completed')
+            }}
+          >
+            Completed
+          </button>
         </div>
       </Wrap>
     )
