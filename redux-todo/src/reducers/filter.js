@@ -1,4 +1,4 @@
-const inistialState = 'completed'
+const inistialState = 'all'
 
 const filter = (state = inistialState, action) => {
   switch (action.type) {

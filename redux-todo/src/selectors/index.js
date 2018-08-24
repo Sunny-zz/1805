@@ -7,5 +7,7 @@ export const getCurrentTodos = (state, filter) => {
       return state.filter(todo => !todo.isCompleted)
     case 'completed':
       return state.filter(todo => todo.isCompleted)
+    default:
+      return null
   }
 }

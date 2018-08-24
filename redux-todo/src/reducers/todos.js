@@ -1,3 +1,4 @@
+import shortId from 'shortid'
 const inistialState = [
   {
     id: '123',
@@ -18,6 +19,11 @@ const inistialState = [
 
 const todos = (state = inistialState, action) => {
   switch (action.type) {
+    case 'ADD_TODO':
+      return [
+        ...state,
+        { id: shortId(), todoText: action.todoText, isCompleted: false }
+      ]
     default:
       return state
   }
