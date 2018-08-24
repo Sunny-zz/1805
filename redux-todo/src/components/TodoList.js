@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import { getCurrentTodos } from '../selectors'
+import store from '../store'
 class TodoList extends Component {
   handleClick = id => {
-    console.log(id)
+    store.dispatch({
+      type: 'COMPLETED_TODO',
+      id
+    })
   }
   render() {
     const { todos, filter } = this.props

@@ -24,6 +24,13 @@ const todos = (state = inistialState, action) => {
         ...state,
         { id: shortId(), todoText: action.todoText, isCompleted: false }
       ]
+    case 'COMPLETED_TODO':
+      return state.map(
+        todo =>
+          todo.id === action.id
+            ? { ...todo, isCompleted: !todo.isCompleted }
+            : todo
+      )
     default:
       return state
   }

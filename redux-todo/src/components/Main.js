@@ -7,7 +7,6 @@ import Menu from './Menu'
 class Main extends Component {
   render() {
     const { todos, filter } = this.props
-
     return (
       <Wrap>
         <Title>TODO</Title>
