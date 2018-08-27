@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import { getCurrentTodos } from '../selectors'
-import axios from 'axios'
+// import axios from 'axios'
 class TodoList extends Component {
   handleClick = id => {
     const { todos, completedTodo } = this.props
-    const uri = `http://localhost:3008/todos/${id}`
-    axios
-      .patch(uri, {
-        isCompleted: !todos.find(todo => todo.id === id).isCompleted
-      })
-      .then(() => {
-        completedTodo(id)
-      })
+    completedTodo(id, todos)
+    // const uri = `http://localhost:3008/todos/${id}`
+    // axios
+    //   .patch(uri, {
+    //     isCompleted: !todos.find(todo => todo.id === id).isCompleted
+    //   })
+    //   .then(() => {
+    //     completedTodo(id)
+    //   })
   }
   render() {
     const { todos, filter } = this.props

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 // import store from "../store";
 // import { addTodo } from "../actions";
 class InputText extends Component {
@@ -14,15 +14,16 @@ class InputText extends Component {
   handleClick = () => {
     const { todoText } = this.state
     if (todoText.trim()) {
-      const uri = 'http://localhost:3008/todos'
+      // const uri = 'http://localhost:3008/todos'
       // console.log(1)
       // store.dispatch(addTodo(todoText));
       // this.props.addTodo(todoText);
-      console.log(this.props.addTodo)
+      // console.log(this.props.addTodo)
       // this.props.addTodo(todoText);
-      axios.post(uri, { todoText, isCompleted: false }).then(res => {
-        this.props.addTodo(res.data)
-      })
+      // axios.post(uri, { todoText, isCompleted: false }).then(res => {
+      //   this.props.addTodo(res.data)
+      // })
+      this.props.addTodo(todoText)
       this.setState({
         todoText: ''
       })

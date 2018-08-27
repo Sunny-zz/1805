@@ -6,10 +6,7 @@ const todos = (state = [], action) => {
       return [...state, action.todo]
     case COMPLETED_TODO:
       return state.map(
-        todo =>
-          todo.id === action.id
-            ? { ...todo, isCompleted: !todo.isCompleted }
-            : todo
+        todo => (todo.id === action.newTodo.id ? action.newTodo : todo)
       )
     case GET_TODOS:
       return action.todos
