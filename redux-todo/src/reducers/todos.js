@@ -1,24 +1,7 @@
 import shortId from "shortid";
-import { ADD_TODO, COMPLETED_TODO } from "../constants/actionTypes";
-const inistialState = [
-  {
-    id: "123",
-    todoText: "哈哈哈",
-    isCompleted: false
-  },
-  {
-    id: "456",
-    todoText: "哈哈1221312哈",
-    isCompleted: true
-  },
-  {
-    id: "897",
-    todoText: "git",
-    isCompleted: false
-  }
-];
+import { ADD_TODO, COMPLETED_TODO, GET_TODOS } from "../constants/actionTypes";
 
-const todos = (state = inistialState, action) => {
+const todos = (state = [], action) => {
   switch (action.type) {
     case ADD_TODO:
       return [
@@ -32,6 +15,8 @@ const todos = (state = inistialState, action) => {
             ? { ...todo, isCompleted: !todo.isCompleted }
             : todo
       );
+    case GET_TODOS:
+      return action.todos;
     default:
       return state;
   }
