@@ -6,13 +6,13 @@ import TodoList from "./TodoList";
 import Menu from "./Menu";
 class Main extends Component {
   render() {
-    const { todos, filter, addTodo } = this.props;
+    const { todos, filter, addTodo, setFilter, completedTodo } = this.props;
     return (
       <Wrap>
         <Title>TODO</Title>
         <InputText addTodo={addTodo} />
-        <TodoList todos={todos} filter={filter} />
-        <Menu todos={todos} />
+        <TodoList todos={todos} filter={filter} completedTodo={completedTodo} />
+        <Menu todos={todos} setFilter={setFilter} />
       </Wrap>
     );
   }

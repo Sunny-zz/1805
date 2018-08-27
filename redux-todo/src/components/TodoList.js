@@ -1,32 +1,29 @@
-import React, { Component } from 'react'
-import { getCurrentTodos } from '../selectors'
-import store from '../store'
+import React, { Component } from "react";
+import { getCurrentTodos } from "../selectors";
+
 class TodoList extends Component {
   handleClick = id => {
-    store.dispatch({
-      type: 'COMPLETED_TODO',
-      id
-    })
-  }
+    this.props.completedTodo(id);
+  };
   render() {
-    const { todos, filter } = this.props
+    const { todos, filter } = this.props;
     const todoList = getCurrentTodos(todos, filter).map(todo => (
       <li
-        style={{ textDecoration: todo.isCompleted ? 'line-through' : 'none' }}
+        style={{ textDecoration: todo.isCompleted ? "line-through" : "none" }}
         onClick={() => {
-          this.handleClick(todo.id)
+          this.handleClick(todo.id);
         }}
         key={todo.id}
       >
         {todo.todoText}
       </li>
-    ))
+    ));
     return (
       <div>
         <ul>{todoList}</ul>
       </div>
-    )
+    );
   }
 }
 
-export default TodoList
+export default TodoList;

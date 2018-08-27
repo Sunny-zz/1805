@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import store from "../store";
 import { getActiveNum } from "../selectors";
 class Menu extends Component {
   handleClick = filter => {
-    store.dispatch({
-      type: "SET_FILTER",
-      filter
-    });
+    this.props.setFilter(filter);
   };
   render() {
     const { todos } = this.props;
