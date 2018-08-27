@@ -1,24 +1,24 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import { lightBlue } from '../constants/colors'
-import InputText from './InputText'
-import TodoList from './TodoList'
-import Menu from './Menu'
+import React, { Component } from "react";
+import styled from "styled-components";
+import { lightBlue } from "../constants/colors";
+import InputText from "./InputText";
+import TodoList from "./TodoList";
+import Menu from "./Menu";
 class Main extends Component {
   render() {
-    const { todos, filter } = this.props
+    const { todos, filter, addTodo } = this.props;
     return (
       <Wrap>
         <Title>TODO</Title>
-        <InputText />
+        <InputText addTodo={addTodo} />
         <TodoList todos={todos} filter={filter} />
         <Menu todos={todos} />
       </Wrap>
-    )
+    );
   }
 }
 
-export default Main
+export default Main;
 
 const Wrap = styled.div`
   width: 80%;
@@ -29,7 +29,7 @@ const Wrap = styled.div`
   background-color: ${lightBlue};
   margin: 0 auto;
   padding: 20px 60px;
-`
+`;
 const Title = styled.h1`
   color: #fff;
-`
+`;
