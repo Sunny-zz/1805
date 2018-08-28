@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // import Fade from './Fade'
 import CSSTransition from 'react-transition-group/CSSTransition'
 import './app.css'
+import Todo from './Todo'
 class App extends Component {
   state = {
     in: false,
@@ -39,6 +40,7 @@ class App extends Component {
         >
           {state => <button onClick={this.handelClick}>Click me!</button>}
         </CSSTransition>
+        <Todo />
       </div>
     )
   }
