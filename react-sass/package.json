@@ -4,19 +4,19 @@
   "private": true,
   "dependencies": {
     "react": "^16.4.2",
+    "react-app-rewired": "^1.5.2",
     "react-dom": "^16.4.2",
-    "react-scripts": "1.1.4",
-    "react-transition-group": "^2.4.0",
-    "uuid": "^3.3.2"
+    "react-scripts": "1.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
     "node-sass": "^4.9.3",
+    "react-app-rewire-sass-modules": "^1.1.7",
     "sass-loader": "^7.1.0"
   }
 }

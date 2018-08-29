@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import Fade from './Fade'
 import CSSTransition from 'react-transition-group/CSSTransition'
-import './app.css'
+import './app.scss'
 import Todo from './Todo'
 class App extends Component {
   state = {
