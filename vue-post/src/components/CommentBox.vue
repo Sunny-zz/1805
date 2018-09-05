@@ -2,7 +2,7 @@
   <div class="box-wrap">
     <div>
       <input type="text" v-model.trim="comment">
-      <button @click="addComment">评论</button>
+      <button @click="handleClick">评论</button>
     </div>
     <div>
       <h4>评论</h4>
@@ -18,27 +18,13 @@
 export default {
   name: 'commentBox',
   data: () => ({
-    comment: '',
-    comments: []
+    comment: ''
   }),
+  props: ['comments', 'addComment', 'delComment'],
   methods: {
-    addComment() {
-      if (this.$data.comment) {
-        const newComment = {
-          text: this.$data.comment,
-          id: Math.floor(Math.random() * 10000)
-        }
-        this.$data.comments.push(newComment)
-        this.$data.comment = ''
-      } else {
-        alert('请输入有效字符')
-      }
-    },
-    delComment(id) {
-      this.$data.comments.splice(
-        this.$data.comments.findIndex(t => t.id === id),
-        1
-      )
+    handleClick() {
+      this.$props.addComment(this.$data.comment)
+      this.$data.comment = ''
     }
   }
 }

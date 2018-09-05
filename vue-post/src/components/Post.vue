@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
-    <PostBody />
-    <CommentBox />
+    <PostBody :comments="comments" />
+    <CommentBox :comments="comments" :addComment="addComment" :delComment="delComment" />
   </div>
 </template>
 <script>
@@ -12,6 +12,33 @@ export default {
   components: {
     PostBody,
     CommentBox
+  },
+  data: () => ({
+    comments: [
+      {
+        id: '21123',
+        text: '123712876'
+      }
+    ]
+  }),
+  methods: {
+    addComment(comment) {
+      if (comment) {
+        const newComment = {
+          text: comment,
+          id: Math.floor(Math.random() * 10000)
+        }
+        this.$data.comments.push(newComment)
+      } else {
+        alert('请输入有效字符')
+      }
+    },
+    delComment(id) {
+      this.$data.comments.splice(
+        this.$data.comments.findIndex(t => t.id === id),
+        1
+      )
+    }
   }
 }
 </script>
