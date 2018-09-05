@@ -7,6 +7,7 @@
 <script>
 import PostBody from './PostBody'
 import CommentBox from './CommentBox'
+import axios from 'axios'
 export default {
   name: 'post',
   components: {
@@ -14,13 +15,13 @@ export default {
     CommentBox
   },
   data: () => ({
-    comments: [
-      {
-        id: '21123',
-        text: '123712876'
-      }
-    ]
+    comments: []
   }),
+  mounted() {
+    axios.get('http://localhost:3008/comments').then(res => {
+      this.comments = res.data.filter(t => t.postId === this.$route.params.id)
+    })
+  },
   methods: {
     addComment(comment) {
       if (comment) {
