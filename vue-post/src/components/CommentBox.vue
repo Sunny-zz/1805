@@ -6,11 +6,11 @@
     </div>
     <div>
       <h4>评论</h4>
-      <ul>
+      <transition-group name='list' tag="ul">
         <li v-for="comment in comments" :key="comment.id">{{comment.text}}
           <button @click="delComment(comment.id)">删除</button>
         </li>
-      </ul>
+      </transition-group>
     </div>
   </div>
 </template>
@@ -23,8 +23,8 @@ export default {
   props: ['comments', 'addComment', 'delComment'],
   methods: {
     handleClick() {
-      this.$props.addComment(this.$data.comment)
-      this.$data.comment = ''
+      this.addComment(this.comment)
+      this.comment = ''
     }
   }
 }
@@ -38,5 +38,14 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 10px;
+}
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+}
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 </style>

@@ -28,16 +28,13 @@ export default {
           text: comment,
           id: Math.floor(Math.random() * 10000)
         }
-        this.$data.comments.push(newComment)
+        this.comments.push(newComment)
       } else {
         alert('请输入有效字符')
       }
     },
     delComment(id) {
-      this.$data.comments.splice(
-        this.$data.comments.findIndex(t => t.id === id),
-        1
-      )
+      this.comments.splice(this.comments.findIndex(t => t.id === id), 1)
     }
   }
 }

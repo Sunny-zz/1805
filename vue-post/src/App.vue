@@ -1,16 +1,12 @@
 <template>
   <div class='app'>
-    <Post />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Post from './components/Post'
 export default {
-  name: 'app',
-  components: {
-    Post
-  }
+  name: 'app'
 }
 </script>
 

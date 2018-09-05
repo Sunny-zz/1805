@@ -11,7 +11,7 @@ export default {
   props: ['comments'],
   computed: {
     commentNum() {
-      return this.$props.comments.length
+      return this.comments.length
     }
   }
 }
