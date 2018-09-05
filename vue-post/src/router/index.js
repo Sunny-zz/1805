@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [
   { path: '/', component: Home },
-  { path: '/post', component: Post }
+  { path: '/post/:id', component: Post }
 ]
 const router = new VueRouter({
   routes,

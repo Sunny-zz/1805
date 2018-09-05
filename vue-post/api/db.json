@@ -1,0 +1,14 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "vue 基础",
+      "content": "挺好的"
+    },
+    {
+      "id": "2",
+      "title": "react 基础",
+      "content": "也不错"
+    }
+  ]
+}
