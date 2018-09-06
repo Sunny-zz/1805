@@ -9,16 +9,16 @@
         <td>小计</td>
         <td>操作</td>
       </thead>
-      <CartList :carts="carts" />
+      <CartList :carts="carts" :add="add" :sub="sub" />
       <tfoot>
         <td><input type="checkbox">全选</td>
         <td>
           <button>删除选中的商品</button>
         </td>
         <td>
-          <span>已选择0件商品</span>
+          <span>已选择{{getSelectedNum}}件商品</span>
         </td>
-        <td>总价:$0.00</td>
+        <td>总价:${{getTotal.toFixed(2)}}</td>
         <td colspan="2">
           <button>结算</button>
         </td>
@@ -49,6 +49,32 @@ export default {
       }
     ]
   }),
+  computed: {
+    getSelectedNum() {
+      return this.carts.reduce(
+        (result, cart) => (cart.isSelected ? result + cart.number * 1 : result),
+        0
+      )
+    },
+    getTotal() {
+      return this.carts.reduce(
+        (result, cart) =>
+          cart.isSelected ? result + cart.number * cart.price : result,
+        0
+      )
+    }
+  },
+  methods: {
+    add(id) {
+      this.carts.find(t => t.id === id).number++
+    },
+    sub(id) {
+      // this.carts.find(t => t.id === id).number > 1
+      //   ? this.carts.find(t => t.id === id).number--
+      //   : 1
+      this.carts.find(t => t.id === id).number--
+    }
+  },
   components: {
     CartList
   }
