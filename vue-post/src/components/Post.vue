@@ -25,17 +25,23 @@ export default {
   methods: {
     addComment(comment) {
       if (comment) {
-        const newComment = {
-          text: comment,
-          id: Math.floor(Math.random() * 10000)
-        }
-        this.comments.push(newComment)
+        axios
+          .post('http://localhost:3008/comments', {
+            text: comment,
+            postId: this.$route.params.id
+          })
+          .then(res => {
+            this.comments.push(res.data)
+          })
       } else {
         alert('请输入有效字符')
       }
     },
     delComment(id) {
-      this.comments.splice(this.comments.findIndex(t => t.id === id), 1)
+      axios.delete(`http://localhost:3008/comments/${id}`).then(res => {
+        // console.log(res.data)
+        this.comments.splice(this.comments.findIndex(t => t.id === id), 1)
+      })
     }
   }
 }
