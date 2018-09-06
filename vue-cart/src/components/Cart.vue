@@ -2,18 +2,18 @@
   <div class="cart-wrap">
     <table>
       <thead>
-        <td><input type="checkbox">全选</td>
+        <td><input @change="handleAll" type="checkbox" v-model="isAllSelected">全选</td>
         <td>商品</td>
         <td>单价</td>
         <td>数量</td>
         <td>小计</td>
         <td>操作</td>
       </thead>
-      <CartList :carts="carts" :add="add" :sub="sub" />
+      <CartList :carts="carts" :add="add" :sub="sub" :del="del" :delSelected="delSelected" :changeAll="changeAll" />
       <tfoot>
-        <td><input type="checkbox">全选</td>
+        <td><input @change="handleAll" type="checkbox" v-model="isAllSelected">全选</td>
         <td>
-          <button>删除选中的商品</button>
+          <button @click="delSelected">删除选中的商品</button>
         </td>
         <td>
           <span>已选择{{getSelectedNum}}件商品</span>
@@ -47,7 +47,8 @@ export default {
         number: 1,
         isSelected: true
       }
-    ]
+    ],
+    isAllSelected: true
   }),
   computed: {
     getSelectedNum() {
@@ -73,6 +74,21 @@ export default {
       //   ? this.carts.find(t => t.id === id).number--
       //   : 1
       this.carts.find(t => t.id === id).number--
+    },
+    del(id) {
+      this.carts.splice(this.carts.findIndex(t => t.id === id), 1)
+    },
+    delSelected() {
+      this.carts = this.carts.filter(t => !t.isSelected)
+    },
+    handleAll() {
+      this.carts = this.carts.map(t => {
+        t.isSelected = this.isAllSelected
+        return t
+      })
+    },
+    changeAll(checked) {
+      this.isAllSelected = checked
     }
   },
   components: {
