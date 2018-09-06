@@ -18,9 +18,13 @@ export default {
     posts: []
   }),
   mounted() {
-    axios.get('http://localhost:3008/posts').then(res => {
-      this.posts = res.data
-    })
+    axios
+      .get(
+        'https://raw.githubusercontent.com/Sunny-zz/1805/master/vue-post/api/db.json'
+      )
+      .then(res => {
+        this.posts = res.data.posts
+      })
   }
 }
 </script>
