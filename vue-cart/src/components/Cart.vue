@@ -9,16 +9,16 @@
         <td>小计</td>
         <td>操作</td>
       </thead>
-      <CartList :carts="carts" :add="add" :sub="sub" :del="del" :delSelected="delSelected" :changeAll="changeAll" />
+      <CartList :carts="carts" :del="del" :delSelected="delSelected" :changeAll="changeAll" />
       <tfoot>
         <td><input @change="handleAll" type="checkbox" v-model="isAllSelected">全选</td>
         <td>
           <button @click="delSelected">删除选中的商品</button>
         </td>
         <td>
-          <span>已选择{{getSelectedNum}}件商品</span>
+          <span>已选择{{getTotalObject.number}}件商品</span>
         </td>
-        <td>总价:${{getTotal.toFixed(2)}}</td>
+        <td>总价:${{getTotalObject.total.toFixed(2)}}</td>
         <td colspan="2">
           <button>结算</button>
         </td>
@@ -51,30 +51,36 @@ export default {
     isAllSelected: true
   }),
   computed: {
-    getSelectedNum() {
+    // getSelectedNum() {
+    //   return this.carts.reduce(
+    //     (result, cart) => (cart.isSelected ? result + cart.number * 1 : result),
+    //     0
+    //   )
+    // },
+    // getTotal() {
+    //   return this.carts.reduce(
+    //     (result, cart) =>
+    //       cart.isSelected ? result + cart.number * cart.price : result,
+    //     0
+    //   )
+    // }
+    getTotalObject() {
       return this.carts.reduce(
-        (result, cart) => (cart.isSelected ? result + cart.number * 1 : result),
-        0
-      )
-    },
-    getTotal() {
-      return this.carts.reduce(
-        (result, cart) =>
-          cart.isSelected ? result + cart.number * cart.price : result,
-        0
+        (object, cart) => {
+          if (cart.isSelected) {
+            object.number += cart.number * 1
+            object.total += cart.number * cart.price
+          }
+          return object
+        },
+        {
+          number: 0,
+          total: 0
+        }
       )
     }
   },
   methods: {
-    add(id) {
-      this.carts.find(t => t.id === id).number++
-    },
-    sub(id) {
-      // this.carts.find(t => t.id === id).number > 1
-      //   ? this.carts.find(t => t.id === id).number--
-      //   : 1
-      this.carts.find(t => t.id === id).number--
-    },
     del(id) {
       this.carts.splice(this.carts.findIndex(t => t.id === id), 1)
     },
