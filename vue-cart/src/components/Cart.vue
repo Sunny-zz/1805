@@ -67,11 +67,12 @@ export default {
     getTotalObject() {
       return this.carts.reduce(
         (object, cart) => {
-          if (cart.isSelected) {
-            object.number += cart.number * 1
-            object.total += cart.number * cart.price
-          }
-          return object
+          return cart.isSelected
+            ? {
+                number: object.number + cart.number * 1,
+                total: object.total + cart.number * cart.price
+              }
+            : object
         },
         {
           number: 0,
