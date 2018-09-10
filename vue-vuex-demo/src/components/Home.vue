@@ -1,5 +1,5 @@
 <template>
   <div>
-    <span>{{$store.state.count}}</span>
+    <span>{{$store.state.number.number}}</span>
   </div>
 </template>

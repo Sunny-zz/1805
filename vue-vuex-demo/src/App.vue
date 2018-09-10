@@ -1,7 +1,7 @@
 <template>
   <div>
     <button>-</button>
-    <span>{{this.$store.state.count}}</span>
+    <span>{{this.$store.state.count.count}}</span>
     <button @click="$store.commit('increment')">+</button>
     <Home />
   </div>
