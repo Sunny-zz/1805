@@ -4,7 +4,7 @@
       <h3>热门文章</h3>
       <ul>
         <li>
-          <router-link exact active-class='active1' to='/'>推荐</router-link>
+          <router-link exact active-class='active1' :to="{name:'home'}">推荐</router-link>
         </li>
         <li>
           <router-link active-class='active1' to='/welcome/frontend'>前端</router-link>

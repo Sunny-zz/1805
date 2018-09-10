@@ -1,8 +1,8 @@
 <template>
   <header>
-    <router-link to="/" exact active-class='active' :class="{active:this.$route.path.includes('welcome') }">首页</router-link>
-    <router-link to="/pins" active-class='active'>沸点</router-link>
-    <router-link to="/events" active-class='active'>活动</router-link>
+    <router-link :to="{name:'home'}" exact active-class='active' :class="{active:this.$route.path.includes('welcome') }">首页</router-link>
+    <router-link :to="{name:'pins'}" active-class='active'>沸点</router-link>
+    <router-link :to="{name:'events'}" active-class='active'>活动</router-link>
   </header>
 </template>
 
