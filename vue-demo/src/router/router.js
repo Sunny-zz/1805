@@ -5,6 +5,7 @@ import Pins from '../components/Pins'
 import Events from '../components/Events'
 import ShowList from '../components/ShowList'
 import Errors from '../components/Errors'
+import User from '../components/User'
 Vue.use(VueRouter)
 
 const routes = [
@@ -19,6 +20,7 @@ const routes = [
   { path: '/a', redirect: '/pins' },
   { path: '/pins', component: Pins, name: 'pins' },
   { path: '/events', component: Events, name: 'events' },
+  { path: '/user', component: User, name: 'user' },
   { path: '*', redirect: '/404' },
   { path: '/404', component: Errors }
 ]
