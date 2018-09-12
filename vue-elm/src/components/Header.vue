@@ -39,6 +39,7 @@ header {
   flex-direction: column;
   align-items: center;
   position: relative;
+  flex-shrink: 0;
   .head-bg {
     width: 100%;
     height: 26vw;
@@ -69,7 +70,6 @@ header {
   }
   p {
     display: flex;
-    margin: 0;
     font-size: 10px;
     color: #666;
     margin-top: 4px;
