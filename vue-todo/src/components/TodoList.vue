@@ -1,9 +1,13 @@
 <template>
   <div>
     <ul v-if='$store.state.todos.length'>
-      <li v-for="todo in todos" :key="todo.id" :style="{textDecoration: todo.completed ? 'line-through' :'none' }" @click="changeTodo(todo.id,todo.completed)">{{todo.todo}}</li>
+      <li v-for="todo in todos" :key="todo.id" :style="{textDecoration: todo.completed ? 'line-through' :'none' }">
+        <span @click="changeTodo(todo.id,todo.completed)">{{todo.todo}}</span>
+        <button @click="$store.dispatch('delTodo',{id:todo.id})">删除</button>
+      </li>
     </ul>
     <span v-else>请添加待办事项</span>
+
   </div>
 </template>
 <script>
@@ -14,7 +18,7 @@ export default {
     changeTodo(id, completed) {
       axios
         .patch(`http://localhost:3008/todos/${id}`, { completed: !completed })
-        .then(res => {
+        .then(() => {
           this.$store.commit('completedTodo', id)
         })
     }
