@@ -39,19 +39,18 @@ export default {
   props: ['changeActiveTabIndex'],
   mounted() {
     const tabs = document.querySelectorAll('.food-tab')
-    let heightArr = []
+    let offsetTopList = []
     for (let i = 0; i < tabs.length; i++) {
-      heightArr.push(tabs[i].offsetTop - tabs[0].offsetTop)
+      offsetTopList.push(tabs[i].offsetTop - tabs[0].offsetTop)
     }
-    console.log(heightArr)
     this.$nextTick(() => {
       this.scroll = new Bscroll(this.$refs.wrapper, { probeType: 3 })
       this.scroll.on('scroll', pos => {
-        if (-pos.y < heightArr[1]) {
+        if (-pos.y < offsetTopList[1]) {
           this.changeActiveTabIndex(0)
-        } else if (-pos.y < heightArr[2]) {
+        } else if (-pos.y < offsetTopList[2]) {
           this.changeActiveTabIndex(1)
-        } else if (-pos.y > heightArr[2]) {
+        } else if (-pos.y > offsetTopList[2]) {
           this.changeActiveTabIndex(2)
         }
       })
