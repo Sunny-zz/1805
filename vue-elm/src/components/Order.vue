@@ -1,7 +1,8 @@
 <template>
   <div class="order-wrap">
     <Menu />
-    <FoodList />
+    <button @click="$refs.foodList.scroll.scrollToElement($refs.foodList.$refs.good,1000)"></button>
+    <FoodList ref='foodList' />
   </div>
 </template>
 <script>

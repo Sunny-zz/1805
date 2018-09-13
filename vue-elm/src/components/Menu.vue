@@ -7,6 +7,12 @@
     </ul>
   </div>
 </template>
+<script>
+export default {
+  name: 'elm-menu'
+}
+</script>
+
 <style>
 .menu {
   width: 80px;

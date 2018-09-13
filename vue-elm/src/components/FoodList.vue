@@ -1,9 +1,9 @@
 <template>
   <div class="food-list" ref='wrapper'>
     <div>
-      <div class="hot">
+      <div class="hot" ref='hot'>
         <h3>热销</h3>
-        <button @click="scroll.scrollToElement($refs.discount,1000)">滚动</button>
+        <button @click="scroll.scrollToElement($refs.good,1000)">滚动</button>
         <div>第一个hot</div>
         <div>第二个hot</div>
         <div>第三个hot</div>
@@ -40,9 +40,6 @@ export default {
     this.$nextTick(() => {
       this.scroll = new Bscroll(this.$refs.wrapper, {})
     })
-  },
-  a(el) {
-    this.scroll.scrollToElement(el, 1000)
   }
 }
 </script>
