@@ -1,7 +1,7 @@
 <template>
   <div class="food-list" ref='wrapper'>
     <div>
-      <div class="hot" ref='hot'>
+      <div class="hot food-tab" ref='hot'>
         <h3>热销</h3>
         <button @click="scroll.scrollToElement($refs.good,1000)">滚动</button>
         <div>第一个hot</div>
@@ -11,7 +11,7 @@
         <div>第吴个hot</div>
         <div>第六个hot</div>
       </div>
-      <div class="discount" ref='discount'>
+      <div class="discount food-tab" ref='discount'>
         <h3>优惠</h3>
         <div>第一个discount</div>
         <div>第二个discount</div>
@@ -20,7 +20,7 @@
         <div>第吴个discount</div>
         <div>第六个discount</div>
       </div>
-      <div class="good" ref='good'>
+      <div class="good food-tab" ref='good'>
         <h3>精品</h3>
         <div>第一个good</div>
         <div>第二个good</div>
@@ -36,9 +36,25 @@
 import Bscroll from 'better-scroll'
 export default {
   name: 'foodList',
+  props: ['changeActiveTabIndex'],
   mounted() {
+    const tabs = document.querySelectorAll('.food-tab')
+    let heightArr = []
+    for (let i = 0; i < tabs.length; i++) {
+      heightArr.push(tabs[i].offsetTop - tabs[0].offsetTop)
+    }
+    console.log(heightArr)
     this.$nextTick(() => {
-      this.scroll = new Bscroll(this.$refs.wrapper, {})
+      this.scroll = new Bscroll(this.$refs.wrapper, { probeType: 3 })
+      this.scroll.on('scroll', pos => {
+        if (-pos.y < heightArr[1]) {
+          this.changeActiveTabIndex(0)
+        } else if (-pos.y < heightArr[2]) {
+          this.changeActiveTabIndex(1)
+        } else if (-pos.y > heightArr[2]) {
+          this.changeActiveTabIndex(2)
+        }
+      })
     })
   }
 }
