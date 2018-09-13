@@ -14,7 +14,6 @@ const actions = {
   getGoods({ commit }) {
     const uri = 'http://localhost:3008/goods'
     axios.get(uri).then(res => {
-      console.log(res.data)
       commit('getGoods', res.data)
     })
   }

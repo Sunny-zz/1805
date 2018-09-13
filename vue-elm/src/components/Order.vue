@@ -19,7 +19,7 @@ export default {
   methods: {
     changeScroll(el) {
       const { foodList } = this.$refs
-      foodList.scroll.scrollToElement(foodList.$refs[el], 1000)
+      foodList.scroll.scrollToElement(foodList.$refs[el][0], 1000)
     },
     changeActiveTabIndex(ind) {
       this.activeTabIndex = ind
