@@ -1,10 +1,9 @@
 <template>
   <div class="menu">
-    <ul>
-      <li>{{goodsNameList}}</li>
-      <li @click="changeScroll('hot');changeActiveTabIndex(0)" :class="{active:activeTabIndex===0}">热销</li>
-      <li @click="changeScroll('discount');changeActiveTabIndex(1)" :class="{active:activeTabIndex===1}">优惠</li>
-      <li @click="changeScroll('good');changeActiveTabIndex(2)" :class="{active:activeTabIndex===2}">精品</li>
+    <ul v-show="goodsNameList.length">
+      <li v-for="(name,ind) in goodsNameList" :key='ind'>
+        {{name}}
+      </li>
     </ul>
   </div>
 </template>
