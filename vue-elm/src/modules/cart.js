@@ -14,6 +14,9 @@ const mutations = {
   },
   subCountNum(state, id) {
     state.carts.find(t => t.id === id).count--
+    if (state.carts.find(t => t.id === id).count === 0) {
+      state.carts.splice(state.carts.findIndex(t => t.id === id), 1)
+    }
   }
 }
 const getters = {
@@ -23,6 +26,18 @@ const getters = {
         ? state.carts.find(t => t.id === id).count
         : 0
     }
+  },
+  getTotalObj(state) {
+    return state.carts.reduce(
+      (obj, food) => ({
+        allCount: obj.allCount + food.count,
+        total: obj.total + food.price * food.count
+      }),
+      {
+        allCount: 0,
+        total: 0
+      }
+    )
   }
 }
 const carts = {

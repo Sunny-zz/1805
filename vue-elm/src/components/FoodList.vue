@@ -15,7 +15,7 @@
             <span class="price">￥{{food.price}}</span>
             <div class="count">
               <p v-show="$store.getters.getFoodNum(food.id)" class="sub" @click="$store.commit('subCountNum',food.id)"></p>
-              <span v-show="$store.getters.getFoodNum(food.id)">{{$store.getters.getFoodNum(food.id)}}</span>
+              <span class="count-num" v-show="$store.getters.getFoodNum(food.id)">{{$store.getters.getFoodNum(food.id)}}</span>
               <p @click="$store.commit('addToCart',food)" class="add"></p>
             </div>
           </div>
@@ -102,7 +102,7 @@ export default {
         .icon {
           width: 25vw;
           height: 25vw;
-          font-style: 0;
+          flex-shrink: 0;
           margin-right: 2.5vw;
         }
         .food-info {
@@ -147,14 +147,17 @@ export default {
             display: flex;
             right: 2vw;
             width: 20vw;
-            justify-content: space-between;
             align-items: center;
+            justify-content: flex-end;
             height: 10vw;
             z-index: 99;
             p {
               width: 6vw;
               height: 6vw;
               background-size: cover;
+            }
+            .count-num {
+              margin: 0 2vw;
             }
             .sub {
               width: 7vw;

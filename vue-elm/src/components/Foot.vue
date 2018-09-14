@@ -4,14 +4,29 @@
       <span></span>
     </div>
     <p class="cart-info">
-      <span>未选购商品</span>
+      <span>{{total?`￥${total}`:'未选购商品'}}</span>
       <span>另需配送费3元</span>
     </p>
     <div class='total'>
-      <span>¥20起送</span>
+      <span v-if="total< 20">{{total!==0? '差':''}}¥{{20-total}}起送</span>
+      <span v-else>去结算</span>
     </div>
   </footer>
 </template>
+<script>
+export default {
+  name: 'foot',
+  computed: {
+    total() {
+      return this.$store.getters.getTotalObj.total
+    },
+    allCount() {
+      return this.$store.getters.getTotalObj.allCount
+    }
+  }
+}
+</script>
+
 
 <style lang="scss" scoped>
 footer {
@@ -39,7 +54,7 @@ footer {
     left: 4vw;
     position: relative;
     top: -3.5vw;
-    // background-image: radial-gradient(circle, #3a3737 6.266667vw, #444 0);
+
     background-color: #3a3737;
     span {
       width: 6vw;
