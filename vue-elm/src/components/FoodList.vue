@@ -3,7 +3,7 @@
     <div v-show="goods.length">
       <div class='food-tab' v-for="(good,ind) in goods" :key="good.id" :ref='`foodTab${ind}`'>
         <h3>{{good.name}}</h3>
-        <div class='food' v-for="food in good.foods" :key="food.id">
+        <div class='food' @click="changeShowDetail(food)" v-for="food in good.foods" :key="food.id">
           <img class='icon' :src="food.icon" alt="">
           <div class='food-info'>
             <h4>{{food.name}}</h4>
@@ -13,11 +13,7 @@
               <span>好评率{{food.rating}}%</span>
             </p>
             <span class="price">￥{{food.price}}</span>
-            <div class="count">
-              <p v-show="$store.getters.getFoodNum(food.id)" class="sub" @click="$store.commit('subCountNum',food.id)"></p>
-              <span class="count-num" v-show="$store.getters.getFoodNum(food.id)">{{$store.getters.getFoodNum(food.id)}}</span>
-              <p @click="$store.commit('addToCart',food)" class="add"></p>
-            </div>
+            <Count :food='food' />
           </div>
         </div>
       </div>
@@ -26,9 +22,13 @@
 </template>
 <script>
 import Bscroll from 'better-scroll'
+import Count from './Count'
 export default {
   name: 'foodList',
-  props: ['changeActiveTabIndex'],
+  props: ['changeActiveTabIndex', 'changeShowDetail'],
+  components: {
+    Count
+  },
   computed: {
     goods() {
       return this.$store.state.goods.goods
@@ -49,14 +49,6 @@ export default {
         click: true
       })
       this.scroll.on('scrollEnd', pos => {
-        // if (-pos.y < this.offsetTopList[1]) {
-        //   this.changeActiveTabIndex(0)
-        // } else if (-pos.y < this.offsetTopList[2]) {
-        //   this.changeActiveTabIndex(1)
-        // } else if (-pos.y > this.offsetTopList[2]) {
-        //   this.changeActiveTabIndex(2)
-        // }
-        // console.log(this.currentIndex(-pos.y))
         this.changeActiveTabIndex(this.currentIndex(-pos.y))
       })
     })
@@ -144,29 +136,6 @@ export default {
             position: absolute;
             right: 2vw;
             bottom: 0;
-            display: flex;
-            right: 2vw;
-            width: 20vw;
-            align-items: center;
-            justify-content: flex-end;
-            height: 10vw;
-            z-index: 99;
-            p {
-              width: 6vw;
-              height: 6vw;
-              background-size: cover;
-            }
-            .count-num {
-              margin: 0 2vw;
-            }
-            .sub {
-              width: 7vw;
-              height: 7vw;
-              background-image: url('../assets/img/subIcon.png');
-            }
-            .add {
-              background-image: url('../assets/img/addIcon.png');
-            }
           }
         }
       }
